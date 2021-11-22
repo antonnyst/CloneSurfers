@@ -488,24 +488,24 @@ public class ObstacleGenerator
                 }
                 Debug.LogError(s);
             }
+        }
+    }
 
-        }
-        void CreateObstacleBlock(ObstacleBlock block, float distance)
+    void CreateObstacleBlock(ObstacleBlock block, float distance)
+    {
+        foreach (ObstaceDescription description in block.obstacles)
         {
-            foreach (ObstaceDescription description in block.obstacles)
-            {
-                CreateObstacle(description, distance);
-            }
+            CreateObstacle(description, distance);
         }
+    }
 
-        void CreateObstacle(ObstaceDescription description, float distance)
-        {
-            obstacles.Add(new Obstacle(
-                description.lane,
-                description.length,
-                distance + description.offset,
-                description.type,
-                model));
-        }
+    void CreateObstacle(ObstaceDescription description, float distance)
+    {
+        obstacles.Add(new Obstacle(
+            description.lane,
+            description.length,
+            distance + description.offset,
+            description.type,
+            model));
     }
 }
